@@ -38,6 +38,7 @@ base_image11.src = '../assets/flag3.svg';
 let base_image12 = new Image();
 base_image12.src = '../assets/flag4.svg';
 
+
 class Game {
     constructor(canvas) {
         // Bind the canvas and the context to the game object
@@ -49,18 +50,26 @@ class Game {
         // Constants
         this.SPEED = 300;
         this.GRID_SIZE = 10;
+
+
+        //enemies array ----------------------------------------
+        this.enemies = [];
+        //enemies array ----------------------------------------
     }
 
     eatFood() {
         this.sound.play('eatFood', {
             volume: 1
         });
+
+
         this.enemy = new Enemy(this);
         this.score++;
     }
 
     reset() {
-
+        console.log('this',this)
+        this.createEnemy = new CreateEnemy(this);
         this.enemy = new Enemy(this);
         this.timer = 0;
         this.score = 0;
@@ -101,6 +110,10 @@ class Game {
     paint() {
         this.clear();
         this.enemy.paint();
-        this.enemy.placeRandomly()
+        this.createEnemy.sendtoArray();
+
+
+        this.enemies.map(enemy=> enemy.paint())
+        console.log(this.enemies)
     }
 }
