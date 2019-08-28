@@ -39,6 +39,10 @@ let base_image12 = new Image();
 base_image12.src = '../assets/flag4.svg';
 
 
+
+//-------------------------------------------------------------------------------
+
+
 class Game {
     constructor(canvas) {
         // Bind the canvas and the context to the game object
@@ -48,14 +52,51 @@ class Game {
         this.context = this.canvas.getContext('2d');
 
         // Constants
-        this.SPEED = 300;
+        this.SPEED = 0;
         this.GRID_SIZE = 10;
 
 
         //enemies array ----------------------------------------
         this.enemies = [];
         //enemies array ----------------------------------------
+
+        this.level = 0;
+            this.levelCompleted = {
+                level_1: false,
+                level_2: false,
+                level_3: false}
+
+        this.globalMousePosition = {
+            x: 900,
+            y: 900
+        }
+        //this.getMousePos() = this.getMousePos.bind(this)
     }
+
+    getMousePos(event) {
+       
+    
+
+       
+        this.globalMousePosition.x = event.offsetX ;
+        this.globalMousePosition.y = event.offsetY ;
+    }
+
+    onCanvasClickGetMousePosition() {
+        this.canvas.addEventListener('click', (event) => {
+            this.getMousePos(event);
+            //shoot1_sound.play();
+        })
+    }
+
+    resetMouseState() {
+        this.globalMousePosition.x = 50000;
+        this.globalMousePosition.y = 50000;
+    }
+
+
+
+
 
     eatFood() {
         this.sound.play('eatFood', {
@@ -68,7 +109,7 @@ class Game {
     }
 
     reset() {
-        console.log('this',this)
+        console.log('this', this)
         this.createEnemy = new CreateEnemy(this);
         this.enemy = new Enemy(this);
         this.timer = 0;
@@ -78,6 +119,7 @@ class Game {
     start() {
         this.reset();
         this.loop(0);
+        
     }
 
     loose() {
@@ -91,6 +133,7 @@ class Game {
         if (this.timer < timestamp - this.SPEED) {
             this.runLogic();
             this.paint();
+            this.onCanvasClickGetMousePosition();
             this.timer = timestamp;
             console.log(timestamp)
         }
@@ -109,11 +152,60 @@ class Game {
 
     paint() {
         this.clear();
-        this.enemy.paint();
-        this.createEnemy.sendtoArray();
+
+        switch (this.level) {
+            case 0: // intro level
+                console.log('intro')
+                this.context.drawImage(base_image7, 0, 0, this.canvas.width, this.canvas.height);
+                if (this.globalMousePosition.y >= 300 && this.globalMousePosition.y <= 616) {
+                    this.level = 1;
+                    //resetMouseState()
+                }
+                break;
+            case 1: // map level
+                console.log('map')
+                //map_sound.play();
+                this.context.drawImage(base_image8, 0, 0, this.canvas.width, this.canvas.height);
+                this.context.drawImage(base_image9, 193, 385, this.canvas.width / 6, this.canvas.height / 6);
+
+                // map_sound.play();
+                if (this.globalMousePosition.y >= 468 && this.globalMousePosition.y <= 506) {
+                    this.level = 2;
+                    //resetMouseState()
+                }
+                break;
+            case 2: // first level boot camp
+                // level1_sound.play();
+                // map_sound.pause();
+
+                // this.enemy.paint();
+                this.createEnemy.sendtoArray();
+                this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
+                for (let enemy of this.enemies) {
+                    enemy.paint();
+                    enemy.move();
+                }
+                console.log(this.enemies)
+
+                break;
+            case 3: // second level junior developer
+                console.log('second level junior developer')
+                break;
+            case 4: // third level senior developer
+                console.log('third level senior developer')
+                break;
+            case 5: // final level last level
+                console.log('final level last level')
+                break;
+            case 6: //  show enemies on the map menu
+                console.log('show enemies on the map menu')
+                break;
+            default:
+                console.log('default')
+                break;
+        }
 
 
-        this.enemies.map(enemy=> enemy.paint())
         console.log(this.enemies)
     }
 }
