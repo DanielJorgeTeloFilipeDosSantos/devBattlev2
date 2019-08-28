@@ -9,6 +9,8 @@ class CreateEnemy {
     // this.baseImage.src = '../assets/404.svg';
     this.randomRadian = 0;
 
+    this.radius = 200;
+
     //this.imgArray = ['../assets/404.svg','../assets/bear.svg','../assets/javascript.svg','../assets/maze.svg','../assets/sheep.svg','../assets/typeError.svg']
 
     // this.randomNumber = 0;
@@ -22,9 +24,9 @@ class CreateEnemy {
   // }
 
   sendtoArray() {
-    const radius = 500;
+    this.radius += 100;
     const angle = Math.random() * 2 * Math.PI;
-    const enemy = new Enemy(this.game, radius, angle);
+    const enemy = new Enemy(this.game, this.radius, angle);
     //this.randomImage();
     if (this.game.enemies.length < 15){
 

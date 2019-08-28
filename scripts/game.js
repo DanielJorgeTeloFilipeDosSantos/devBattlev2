@@ -47,7 +47,6 @@ base_image12.src = '../assets/flag4.svg';
 
 //-------------------------------------------------------------------------------
 
-
 class Game {
     constructor(canvas) {
         this.canvas = canvas;
@@ -55,6 +54,7 @@ class Game {
 
         // Constants
         this.SPEED = 0;
+        this.counter = 0;
 
         //enemies array ----------------------------------------
         this.enemies = [];
@@ -115,6 +115,7 @@ class Game {
     start() {
         this.reset();
         this.loop(0);
+        console.log(this.timeCounter)
 
     }
 
@@ -124,11 +125,13 @@ class Game {
             this.onCanvasClickGetMousePosition();
             this.timer = timestamp;
 
-            console.log(timestamp)
-
         }
         window.requestAnimationFrame((timestamp) => this.loop(timestamp));
     } 
+
+    timeout(){
+        
+    }
 
     clear() {
         const width = this.canvas.width;
@@ -167,10 +170,10 @@ class Game {
                     this.createEnemy.sendtoArray();
                 this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
                 for (let enemy of this.enemies) {
-                    
                     enemy.getShoot();
                     enemy.move();
                     enemy.killDev();
+                    
                 }
                 }else{
                     this.context.font = "30px Arial";
