@@ -45,41 +45,33 @@ base_image12.src = '../assets/flag4.svg';
 
 class Game {
     constructor(canvas) {
-        // Bind the canvas and the context to the game object
-        // This will allow it to access both from any other class
-        // that owns a reference to the game object
         this.canvas = canvas;
         this.context = this.canvas.getContext('2d');
 
         // Constants
         this.SPEED = 0;
-        this.GRID_SIZE = 10;
-
 
         //enemies array ----------------------------------------
         this.enemies = [];
         //enemies array ----------------------------------------
 
         this.level = 0;
-            this.levelCompleted = {
-                level_1: false,
-                level_2: false,
-                level_3: false}
+        this.levelCompleted = {
+            level_1: false,
+            level_2: false,
+            level_3: false
+        }
 
         this.globalMousePosition = {
             x: 900,
             y: 900
         }
-        //this.getMousePos() = this.getMousePos.bind(this)
+
     }
 
     getMousePos(event) {
-       
-    
-
-       
-        this.globalMousePosition.x = event.offsetX ;
-        this.globalMousePosition.y = event.offsetY ;
+        this.globalMousePosition.x = event.offsetX;
+        this.globalMousePosition.y = event.offsetY;
     }
 
     onCanvasClickGetMousePosition() {
@@ -119,7 +111,7 @@ class Game {
     start() {
         this.reset();
         this.loop(0);
-        
+
     }
 
     loose() {
@@ -131,18 +123,12 @@ class Game {
 
     loop(timestamp) {
         if (this.timer < timestamp - this.SPEED) {
-            this.runLogic();
             this.paint();
             this.onCanvasClickGetMousePosition();
             this.timer = timestamp;
-            console.log(timestamp)
         }
         window.requestAnimationFrame((timestamp) => this.loop(timestamp));
-    }
-
-    runLogic() {
-
-    }
+    } 
 
     clear() {
         const width = this.canvas.width;
@@ -182,10 +168,9 @@ class Game {
                 this.createEnemy.sendtoArray();
                 this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
                 for (let enemy of this.enemies) {
-                    enemy.paint();
+                    enemy.getShoot();
                     enemy.move();
                 }
-                console.log(this.enemies)
 
                 break;
             case 3: // second level junior developer
@@ -204,8 +189,5 @@ class Game {
                 console.log('default')
                 break;
         }
-
-
-        console.log(this.enemies)
     }
 }

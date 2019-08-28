@@ -11,12 +11,14 @@ class Enemy {
     this.posy = 0;
 
 
+    this.offset_left = this.posx + 31;
+    this.offset_right = this.posx + 131;
+    this.offset_top = this.posy + 31;
+    this.offset_bottom = this.posy + 131;
 
+    this.isAlive = true;
 
-
-
-
-
+    this.globalMousePosition = game.globalMousePosition;
 
   }
 
@@ -24,20 +26,23 @@ class Enemy {
   getShoot() {
 
     if (this.isAlive === false) {
-      this.offset_top = 900;
-      this.offset_bottom = 900;
+      // this.offset_top = 900;
+      // this.offset_bottom = 900;
     } else {
-      this.offset_top = this.posy + 31;
-      this.offset_bottom = this.posy + 131;
+      this.offset_top = this.posy + 50;
+      this.offset_bottom = this.posy + 100;
+
+      this.offset_left = this.posx + 0;
+      this.offset_right = this.posx + 50;
 
       // console.log('globalMousePosition2', globalMousePosition)
 
-      if (globalMousePosition.y >= this.offset_top && globalMousePosition.y <= this.offset_bottom) {
+      if (this.globalMousePosition.y >= this.offset_top && this.globalMousePosition.y <= this.offset_bottom && this.globalMousePosition.x >= this.offset_left && this.globalMousePosition.x <= this.offset_right) {
         console.log('died')
 
         this.isAlive = false;
       } else {
-        ctx.drawImage(base_image, width / 3, this.posy, width / 4, height / 4);
+        this.paint();
       }
     }
   }
