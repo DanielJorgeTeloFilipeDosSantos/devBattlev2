@@ -5,6 +5,12 @@ const SOUNDS = {
     lost: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/HONK.wav"
 };
 
+//https://www.youtube.com/watch?v=HGbVOWU9Jik
+
+// wii music https://www.youtube.com/watch?v=Um4OQ6KP1m4
+
+// go west https://www.youtube.com/watch?v=G38nUngNiro para pa para pa
+
 let base_image = new Image();
 base_image.src = '../assets/developer.svg';
 
@@ -39,7 +45,6 @@ let base_image12 = new Image();
 base_image12.src = '../assets/flag4.svg';
 
 
-
 //-------------------------------------------------------------------------------
 
 
@@ -55,6 +60,8 @@ class Game {
         this.enemies = [];
         //enemies array ----------------------------------------
 
+        this.devAlive = true;
+
         this.level = 0;
         this.levelCompleted = {
             level_1: false,
@@ -68,6 +75,8 @@ class Game {
         }
 
     }
+
+    
 
     getMousePos(event) {
         this.globalMousePosition.x = event.offsetX;
@@ -86,10 +95,6 @@ class Game {
         this.globalMousePosition.y = 50000;
     }
 
-
-
-
-
     eatFood() {
         this.sound.play('eatFood', {
             volume: 1
@@ -101,7 +106,6 @@ class Game {
     }
 
     reset() {
-        console.log('this', this)
         this.createEnemy = new CreateEnemy(this);
         this.enemy = new Enemy(this);
         this.timer = 0;
@@ -114,18 +118,14 @@ class Game {
 
     }
 
-    loose() {
-        this.sound.play('lost', {
-            volume: 1
-        });
-        this.reset();
-    }
-
     loop(timestamp) {
         if (this.timer < timestamp - this.SPEED) {
             this.paint();
             this.onCanvasClickGetMousePosition();
             this.timer = timestamp;
+
+            console.log(timestamp)
+
         }
         window.requestAnimationFrame((timestamp) => this.loop(timestamp));
     } 
@@ -163,13 +163,19 @@ class Game {
             case 2: // first level boot camp
                 // level1_sound.play();
                 // map_sound.pause();
-
-                // this.enemy.paint();
-                this.createEnemy.sendtoArray();
+                if(this.devAlive === true){
+                    this.createEnemy.sendtoArray();
                 this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
                 for (let enemy of this.enemies) {
+                    
                     enemy.getShoot();
                     enemy.move();
+                    enemy.killDev();
+                }
+                }else{
+                    this.context.font = "30px Arial";
+                    this.context.fillStyle = "white";
+                    this.context.fillText("Too many bugs! Go home!", 50, 50);
                 }
 
                 break;

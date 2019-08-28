@@ -1,24 +1,29 @@
 class Enemy {
-  constructor(game, baseImage, radius, angle) {
+  constructor(game, radius, angle) {
     this.game = game;
-    this.baseImage = baseImage;
     this.radius = radius;
     this.angle = angle;
     this.speed = 0.1;
     this.speed = 1 + Math.random() * 0.1;
 
-    this.posx = 0;
-    this.posy = 0;
+    this.posx = 100;
+    this.posy = 100;
 
 
-    this.offset_left = this.posx + 31;
-    this.offset_right = this.posx + 131;
-    this.offset_top = this.posy + 31;
-    this.offset_bottom = this.posy + 131;
+    this.offset_left = this.posx;
+    this.offset_right = this.posx + 100;
+    this.offset_top = this.posy;
+    this.offset_bottom = this.posy + 100;
 
     this.isAlive = true;
 
     this.globalMousePosition = game.globalMousePosition;
+
+     this.imgArray = ['../assets/404.svg','../assets/bear.svg','../assets/javascript.svg','../assets/maze.svg','../assets/sheep.svg','../assets/typeError.svg']
+     this.baseImage = new Image();
+     this.baseImage.src = '../assets/404.svg';
+     this.randomNumber = 0;
+     this.isItRandomImage = false;
 
   }
 
@@ -29,16 +34,15 @@ class Enemy {
       // this.offset_top = 900;
       // this.offset_bottom = 900;
     } else {
-      this.offset_top = this.posy + 50;
-      this.offset_bottom = this.posy + 100;
+      this.offset_top = this.posy + 25;
+      this.offset_bottom = this.posy + 80;
 
-      this.offset_left = this.posx + 0;
-      this.offset_right = this.posx + 50;
-
-      // console.log('globalMousePosition2', globalMousePosition)
+      this.offset_left = this.posx + 33;
+      this.offset_right = this.posx + 62;
 
       if (this.globalMousePosition.y >= this.offset_top && this.globalMousePosition.y <= this.offset_bottom && this.globalMousePosition.x >= this.offset_left && this.globalMousePosition.x <= this.offset_right) {
         console.log('died')
+        this.radius = 3000;
 
         this.isAlive = false;
       } else {
@@ -47,7 +51,20 @@ class Enemy {
     }
   }
 
+   randomImage(){
+     if(this.isItRandomImage === false){
+      this.randomNumber = Math.floor(Math.random() * this.imgArray.length )
+      console.log(this.imgArray[this.randomNumber])
+      this.baseImage.src = this.imgArray[this.randomNumber]
+      this.isItRandomImage = true;
+     }
+
+   }
+
   paint() {
+
+    this.randomImage();
+
     const context = this.game.context;
 
     context.save();
@@ -68,5 +85,11 @@ class Enemy {
 
   move() {
     this.radius -= this.speed;
+  }
+
+   killDev(){
+     if(this.radius >= 0 && this.radius <= 20){
+       this.game.devAlive = false;
+     } 
   }
 }
