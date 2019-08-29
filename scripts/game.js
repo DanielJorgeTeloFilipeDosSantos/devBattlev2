@@ -1,15 +1,4 @@
-// const SOUNDS = {
-//     backgroundMusic: "https://ia802908.us.archive.org/0/items/mythium/JLS_ATI.mp3",
-//     eatFood: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/chewing.mp3",
-//     congratulations: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/happykids.mp3",
-//     lost: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/HONK.wav"
-// };
 
-//https://www.youtube.com/watch?v=HGbVOWU9Jik
-
-// wii music https://www.youtube.com/watch?v=Um4OQ6KP1m4
-
-// go west https://www.youtube.com/watch?v=G38nUngNiro para pa para pa
 
 let shoot1_sound = new Audio("../assets/shoot1.mp3", {
     volume: 1
@@ -101,7 +90,7 @@ class Game {
     onCanvasClickGetMousePosition() {
         this.canvas.addEventListener('click', (event) => {
             this.getMousePos(event);
-            shoot1_sound.play();
+            //shoot1_sound.play();
         })
     }
 
