@@ -4,13 +4,16 @@ let shoot1_sound = new Audio("../assets/shoot1.mp3", {
     volume: 1
 });
 
+
 let map_sound = new Audio("../assets/tes.mp3", {
     volume: 1
 });
+map_sound.load();
 
 let level1_sound = new Audio("../assets/west.mp3", {
     volume: 1
 });
+level1_sound.load();
 
 
 
