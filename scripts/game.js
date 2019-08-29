@@ -1,9 +1,9 @@
-const SOUNDS = {
-    backgroundMusic: "https://ia802908.us.archive.org/0/items/mythium/JLS_ATI.mp3",
-    eatFood: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/chewing.mp3",
-    congratulations: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/happykids.mp3",
-    lost: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/HONK.wav"
-};
+// const SOUNDS = {
+//     backgroundMusic: "https://ia802908.us.archive.org/0/items/mythium/JLS_ATI.mp3",
+//     eatFood: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/chewing.mp3",
+//     congratulations: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/happykids.mp3",
+//     lost: "https://anjaboettcher.github.io/The-very-hungry-caterpillar-game/images/HONK.wav"
+// };
 
 //https://www.youtube.com/watch?v=HGbVOWU9Jik
 
@@ -15,16 +15,7 @@ let base_image = new Image();
 base_image.src = '../assets/developer.svg';
 
 let base_image3 = new Image();
-base_image3.src = '../assets/typeError.svg';
-
-let base_image4 = new Image();
-base_image4.src = '../assets/bear.svg';
-
-let base_image5 = new Image();
-base_image5.src = '../assets/sheep.svg';
-
-let base_image6 = new Image();
-base_image6.src = '../assets/javascript.svg';
+base_image3.src = '../assets/win.svg';
 
 let base_image7 = new Image();
 base_image7.src = '../assets/inicial.svg';
@@ -43,6 +34,12 @@ base_image11.src = '../assets/flag3.svg';
 
 let base_image12 = new Image();
 base_image12.src = '../assets/flag4.svg';
+
+let base_image13 = new Image();
+base_image13.src = '../assets/loose.svg';
+
+let base_image14 = new Image();
+base_image14.src = '../assets/win2.svg';
 
 
 //-------------------------------------------------------------------------------
@@ -73,6 +70,8 @@ class Game {
             x: 900,
             y: 900
         }
+
+        this.numberOfEnemiesKilled = 0;
 
     }
 
@@ -106,8 +105,7 @@ class Game {
     }
 
     reset() {
-        this.createEnemy = new CreateEnemy(this);
-        this.enemy = new Enemy(this);
+        this.createEnemy = new CreateEnemy(this,200);
         this.timer = 0;
         this.score = 0;
     }
@@ -153,22 +151,39 @@ class Game {
                 break;
             case 1: // map level
                 console.log('map')
+                this.devAlive = true;
                 //map_sound.play();
                 this.context.drawImage(base_image8, 0, 0, this.canvas.width, this.canvas.height);
                 this.context.drawImage(base_image9, 193, 385, this.canvas.width / 6, this.canvas.height / 6);
+                if(this.levelCompleted.level_1 === true){
+                    this.context.drawImage(base_image10, 200, 223, this.canvas.width / 6, this.canvas.height / 6);
+                }
+                if(this.levelCompleted.level_2 === true){
+                    this.context.drawImage(base_image11, 425, 225, this.canvas.width / 6, this.canvas.height / 6);
+                }
+
 
                 // map_sound.play();
                 if (this.globalMousePosition.y >= 468 && this.globalMousePosition.y <= 506) {
                     this.level = 2;
-                    //resetMouseState()
+                    this.devAlive = true;
+                    this.resetMouseState();
+                    this.reset();
+                } else if(this.globalMousePosition.y >= 250 && this.globalMousePosition.y <= 350){
+                    this.level = 3;
+                    this.devAlive = true;
+                    this.resetMouseState();
+                    this.reset();
                 }
                 break;
             case 2: // first level boot camp
                 // level1_sound.play();
                 // map_sound.pause();
                 if(this.devAlive === true){
+                    console.log(this.enemies)
                     this.createEnemy.sendtoArray();
-                this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
+                    this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
+                
                 for (let enemy of this.enemies) {
                     enemy.getShoot();
                     enemy.move();
@@ -176,14 +191,46 @@ class Game {
                     
                 }
                 }else{
-                    this.context.font = "30px Arial";
-                    this.context.fillStyle = "white";
-                    this.context.fillText("Too many bugs! Go home!", 50, 50);
+                    console.log('you loose!')
+                    this.level = 8;
                 }
+
+                if(this.numberOfEnemiesKilled === 15){
+                    this.enemies = [];
+                    this.level = 7;
+                    this.numberOfEnemiesKilled = 0;
+                    this.levelCompleted.level_1 = true;
+                    this.resetMouseState();
+                }
+                this.resetMouseState();
 
                 break;
             case 3: // second level junior developer
                 console.log('second level junior developer')
+                console.log(this.devAlive)
+                if(this.devAlive === true){
+                    console.log(this.enemies)
+                    this.createEnemy.sendtoArray();
+                    this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
+                
+                for (let enemy of this.enemies) {
+                    enemy.getShoot();
+                    enemy.move();
+                    enemy.killDev();  
+                }
+                }else{
+                    console.log('you loose!')
+                    this.level = 8;
+                }
+
+                if(this.numberOfEnemiesKilled === 15){
+                    this.enemies = [];
+                    this.level = 9;
+                    this.numberOfEnemiesKilled = 0;
+                    this.levelCompleted.level_2 = true;
+                    this.resetMouseState();
+                }
+                this.resetMouseState();
                 break;
             case 4: // third level senior developer
                 console.log('third level senior developer')
@@ -193,6 +240,31 @@ class Game {
                 break;
             case 6: //  show enemies on the map menu
                 console.log('show enemies on the map menu')
+                break;
+            case 7: //  show enemies on the map menu
+                console.log('you win!!!!')
+                this.context.drawImage(base_image3, 0, 0, this.canvas.width, this.canvas.height)
+                if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
+                    this.level = 1;
+
+                    this.resetMouseState()
+                }
+                break;
+            case 8: //  show enemies on the map menu
+                console.log('you loose!!')
+                this.context.drawImage(base_image13, 0, 0, this.canvas.width, this.canvas.height)
+                if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
+                    this.level = 1;
+                    this.resetMouseState()
+                }
+                break;
+             case 9: //  show enemies on the map menu
+                 console.log('you win2222222222!!!!')
+                 this.context.drawImage(base_image14, 0, 0, this.canvas.width, this.canvas.height)
+                 if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
+                     this.level = 1;
+                     this.resetMouseState()
+                 }
                 break;
             default:
                 console.log('default')

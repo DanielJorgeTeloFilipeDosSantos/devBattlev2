@@ -19,7 +19,7 @@ class Enemy {
 
     this.globalMousePosition = game.globalMousePosition;
 
-     this.imgArray = ['../assets/404.svg','../assets/bear.svg','../assets/javascript.svg','../assets/maze.svg','../assets/sheep.svg','../assets/typeError.svg']
+     this.imgArray = ['../assets/404.svg','../assets/bear.svg','../assets/javascript.svg','../assets/sheep.svg','../assets/typeError.svg']
      this.baseImage = new Image();
      this.baseImage.src = '../assets/404.svg';
      this.randomNumber = 0;
@@ -43,6 +43,8 @@ class Enemy {
       if (this.globalMousePosition.y >= this.offset_top && this.globalMousePosition.y <= this.offset_bottom && this.globalMousePosition.x >= this.offset_left && this.globalMousePosition.x <= this.offset_right) {
         console.log('died')
         this.radius = 3000;
+        this.game.numberOfEnemiesKilled +=1;
+        console.log(this.game.numberOfEnemiesKilled)
 
         this.isAlive = false;
       } else {
@@ -90,6 +92,7 @@ class Enemy {
    killDev(){
      if(this.radius >= 0 && this.radius <= 20){
        this.game.devAlive = false;
+       this.game.enemies = [];
      } 
   }
 }

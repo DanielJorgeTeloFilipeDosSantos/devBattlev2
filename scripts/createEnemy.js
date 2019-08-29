@@ -1,6 +1,6 @@
 
 class CreateEnemy {
-  constructor(game) {
+  constructor(game,resetRadius) {
     this.game = game;
     this.x = 0;
     this.y = 0;
@@ -9,7 +9,7 @@ class CreateEnemy {
     // this.baseImage.src = '../assets/404.svg';
     this.randomRadian = 0;
 
-    this.radius = 200;
+    this.radius = resetRadius;
 
     //this.imgArray = ['../assets/404.svg','../assets/bear.svg','../assets/javascript.svg','../assets/maze.svg','../assets/sheep.svg','../assets/typeError.svg']
 
