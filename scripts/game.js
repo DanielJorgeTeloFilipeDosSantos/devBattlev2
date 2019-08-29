@@ -11,6 +11,20 @@
 
 // go west https://www.youtube.com/watch?v=G38nUngNiro para pa para pa
 
+let shoot1_sound = new Audio("../assets/shoot1.mp3", {
+    volume: 1
+});
+
+let map_sound = new Audio("../assets/tes.mp3", {
+    volume: 1
+});
+
+let level1_sound = new Audio("../assets/west.mp3", {
+    volume: 1
+});
+
+
+
 let base_image = new Image();
 base_image.src = '../assets/developer.svg';
 
@@ -87,7 +101,7 @@ class Game {
     onCanvasClickGetMousePosition() {
         this.canvas.addEventListener('click', (event) => {
             this.getMousePos(event);
-            //shoot1_sound.play();
+            shoot1_sound.play();
         })
     }
 
@@ -150,7 +164,7 @@ class Game {
             case 1: // map level
                 console.log('map')
                 this.devAlive = true;
-                //map_sound.play();
+                map_sound.play();
                 this.context.drawImage(base_image8, 0, 0, this.canvas.width, this.canvas.height);
                 this.context.drawImage(base_image9, 193, 385, this.canvas.width / 6, this.canvas.height / 6);
                 if(this.levelCompleted.level_1 === true){
@@ -185,8 +199,8 @@ class Game {
                 }
                 break;
             case 2: // first level boot camp
-                // level1_sound.play();
-                // map_sound.pause();
+                level1_sound.play();
+                map_sound.pause();
                 if(this.devAlive === true){
                     console.log(this.enemies)
                     this.createEnemy.sendtoArray();
@@ -274,6 +288,8 @@ class Game {
                 console.log('show enemies on the map menu')
                 break;
             case 7: 
+            level1_sound.pause();
+            
                 console.log('you win!!!!')
                 this.context.drawImage(base_image3, 0, 0, this.canvas.width, this.canvas.height)
                 if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
