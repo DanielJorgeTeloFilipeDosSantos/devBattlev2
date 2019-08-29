@@ -90,13 +90,13 @@ class Game {
     onCanvasClickGetMousePosition() {
         this.canvas.addEventListener('click', (event) => {
             this.getMousePos(event);
-            //shoot1_sound.play();
         })
     }
 
     resetMouseState() {
         this.globalMousePosition.x = 50000;
         this.globalMousePosition.y = 50000;
+        shoot1_sound.play();
     }
 
     eatFood() {

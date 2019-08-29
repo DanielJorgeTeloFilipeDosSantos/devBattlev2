@@ -39,11 +39,8 @@ class Enemy {
       this.offset_right = this.posx + 67;
 
       if (this.globalMousePosition.y >= this.offset_top && this.globalMousePosition.y <= this.offset_bottom && this.globalMousePosition.x >= this.offset_left && this.globalMousePosition.x <= this.offset_right) {
-        console.log('died')
         this.radius = 3000;
         this.game.numberOfEnemiesKilled +=1;
-        console.log(this.game.numberOfEnemiesKilled)
-
         this.isAlive = false;
       } else {
         this.paint();
@@ -54,7 +51,6 @@ class Enemy {
    randomImage(){
      if(this.isItRandomImage === false){
       this.randomNumber = Math.floor(Math.random() * this.imgArray.length )
-      console.log(this.imgArray[this.randomNumber])
       this.baseImage.src = this.imgArray[this.randomNumber]
       this.isItRandomImage = true;
      }
