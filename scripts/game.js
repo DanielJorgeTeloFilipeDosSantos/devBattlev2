@@ -275,7 +275,7 @@ class Game {
             case 6: //  show enemies on the map menu
                 break;
             case 7: 
-            level1_sound.pause();
+                level1_sound.pause();
 
 
                 this.context.drawImage(base_image3, 0, 0, this.canvas.width, this.canvas.height)
@@ -286,6 +286,7 @@ class Game {
                 }
                 break;
             case 8: 
+                level1_sound.pause();
                 this.context.drawImage(base_image13, 0, 0, this.canvas.width, this.canvas.height)
                 if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
                     this.level = 1;
@@ -293,6 +294,7 @@ class Game {
                 }
                 break;
             case 9: 
+                 level1_sound.pause();
                  this.context.drawImage(base_image14, 0, 0, this.canvas.width, this.canvas.height)
                  if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
                      this.level = 1;
@@ -300,6 +302,7 @@ class Game {
                  }
                  break;
             case 10: 
+                 level1_sound.pause();
                  this.context.drawImage(base_image15, 0, 0, this.canvas.width, this.canvas.height)
                  if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
                      this.level = 1;
