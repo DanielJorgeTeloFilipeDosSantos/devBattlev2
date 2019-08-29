@@ -221,6 +221,7 @@ class Game {
 
                 break;
             case 3: // second level junior developer
+                map_sound.pause();
                 if(this.devAlive === true){
                     this.createEnemy.sendtoArray();
                     this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
@@ -244,6 +245,7 @@ class Game {
                 this.resetMouseState();
                 break;
             case 4: // third level senior developer
+                map_sound.pause();
                 if(this.devAlive === true){
                     this.createEnemy.sendtoArray();
                     this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
