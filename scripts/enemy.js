@@ -31,8 +31,6 @@ class Enemy {
   getShoot() {
 
     if (this.isAlive === false) {
-      // this.offset_top = 900;
-      // this.offset_bottom = 900;
     } else {
       this.offset_top = this.posy + 22;
       this.offset_bottom = this.posy + 85;
@@ -70,10 +68,6 @@ class Enemy {
     const context = this.game.context;
 
     context.save();
-
-    // let base_image2 = new Image();
-    // base_image2.src = '../assets/404.svg';
-
     const distance = this.radius;
     const angle = this.angle;
 
@@ -81,7 +75,6 @@ class Enemy {
     this.posy = distance * Math.sin(angle) + (this.game.canvas.height / 3 + 50);
 
     context.drawImage(this.baseImage, this.posx, this.posy, 100, 100);
-
     context.restore();
   }
 

@@ -125,7 +125,6 @@ class Game {
     start() {
         this.reset();
         this.loop(0);
-        console.log(this.timeCounter)
 
     }
 
@@ -154,7 +153,6 @@ class Game {
 
         switch (this.level) {
             case 0: // intro level
-                console.log('intro')
                 this.context.drawImage(base_image7, 0, 0, this.canvas.width, this.canvas.height);
                 if (this.globalMousePosition.y >= 300 && this.globalMousePosition.y <= 616) {
                     this.level = 1;
@@ -162,7 +160,6 @@ class Game {
                 }
                 break;
             case 1: // map level
-                console.log('map')
                 this.devAlive = true;
                 map_sound.play();
                 this.context.drawImage(base_image8, 0, 0, this.canvas.width, this.canvas.height);
@@ -189,20 +186,17 @@ class Game {
                     this.devAlive = true;
                     this.resetMouseState();
                     this.reset();
-                    console.log('junior flag')
                 } else if(this.globalMousePosition.y >= 230 && this.globalMousePosition.y <= 350 && this.globalMousePosition.x >= 420 && this.globalMousePosition.x <= 530 ){
                     this.level = 4;
                     this.devAlive = true;
                     this.resetMouseState();
                     this.reset();
-                    console.log('senior flag')
                 }
                 break;
             case 2: // first level boot camp
                 level1_sound.play();
                 map_sound.pause();
                 if(this.devAlive === true){
-                    console.log(this.enemies)
                     this.createEnemy.sendtoArray();
                     this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
                 
@@ -213,7 +207,6 @@ class Game {
                     
                 }
                 }else{
-                    console.log('you loose!')
                     this.level = 8;
                 }
 
@@ -228,10 +221,7 @@ class Game {
 
                 break;
             case 3: // second level junior developer
-                console.log('second level junior developer')
-                console.log(this.devAlive)
                 if(this.devAlive === true){
-                    console.log(this.enemies)
                     this.createEnemy.sendtoArray();
                     this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
                 
@@ -241,7 +231,6 @@ class Game {
                     enemy.killDev();  
                 }
                 }else{
-                    console.log('you loose!')
                     this.level = 8;
                 }
 
@@ -255,10 +244,7 @@ class Game {
                 this.resetMouseState();
                 break;
             case 4: // third level senior developer
-                console.log('third level senior developer')
-                console.log(this.devAlive)
                 if(this.devAlive === true){
-                    console.log(this.enemies)
                     this.createEnemy.sendtoArray();
                     this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
                 
@@ -268,7 +254,6 @@ class Game {
                     enemy.killDev();  
                 }
                 }else{
-                    console.log('you loose!')
                     this.level = 8;
                 }
 
@@ -282,15 +267,13 @@ class Game {
                 this.resetMouseState();
                 break;
             case 5: // final level last level
-                console.log('final level last level')
                 break;
             case 6: //  show enemies on the map menu
-                console.log('show enemies on the map menu')
                 break;
             case 7: 
             level1_sound.pause();
-            
-                console.log('you win!!!!')
+
+
                 this.context.drawImage(base_image3, 0, 0, this.canvas.width, this.canvas.height)
                 if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
                     this.level = 1;
@@ -299,7 +282,6 @@ class Game {
                 }
                 break;
             case 8: 
-                console.log('you loose!!')
                 this.context.drawImage(base_image13, 0, 0, this.canvas.width, this.canvas.height)
                 if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
                     this.level = 1;
@@ -307,7 +289,6 @@ class Game {
                 }
                 break;
             case 9: 
-                 console.log('you win2!!!!')
                  this.context.drawImage(base_image14, 0, 0, this.canvas.width, this.canvas.height)
                  if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
                      this.level = 1;
@@ -315,7 +296,6 @@ class Game {
                  }
                  break;
             case 10: 
-                 console.log('you win3!!!!')
                  this.context.drawImage(base_image15, 0, 0, this.canvas.width, this.canvas.height)
                  if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
                      this.level = 1;
