@@ -3,10 +3,10 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 750 750" style="enable-background:new 0 0 750 750;" xml:space="preserve">
 <style type="text/css">
-	.st0{font-family:'MyriadPro-Regular';}
-	.st1{font-size:60px;}
-	.st2{fill:url(#XMLID_7_);}
-	.st3{fill:#FFFFFF;}
+	.st0{fill:#FFFFFF;}
+	.st1{font-family:'MyriadPro-Regular';}
+	.st2{font-size:60px;}
+	.st3{fill:url(#XMLID_7_);}
 	.st4{font-size:24px;}
 	.st5{fill:#546BDD;}
 	.st6{fill:#EDF3FF;}
@@ -20,17 +20,18 @@
 	.st14{fill:#E6E6E6;}
 	.st15{opacity:0.5;}
 </style>
-<text id="XMLID_1_" transform="matrix(1 0 0 1 59.1109 538.2224)" class="st0 st1">Your project has no bugs!</text>
+<rect id="XMLID_2_" class="st0" width="750" height="750"/>
+<text id="XMLID_1_" transform="matrix(1 0 0 1 59.1109 538.2224)" class="st1 st2">Your project has no bugs!</text>
 <g id="XMLID_154_">
 	<linearGradient id="XMLID_7_" gradientUnits="userSpaceOnUse" x1="454.8942" y1="705.7356" x2="385.8289" y2="665.5649">
 		<stop  offset="0" style="stop-color:#9A5CFF"/>
 		<stop  offset="1" style="stop-color:#5577FF"/>
 	</linearGradient>
-	<path id="XMLID_152_" class="st2" d="M445.3,679H288.6c-4.2,0-7.5-3.4-7.5-7.5v-33.7c0-4.2,3.4-7.5,7.5-7.5h156.7
+	<path id="XMLID_152_" class="st3" d="M445.3,679H288.6c-4.2,0-7.5-3.4-7.5-7.5v-33.7c0-4.2,3.4-7.5,7.5-7.5h156.7
 		c4.2,0,7.5,3.4,7.5,7.5v33.7C452.8,675.6,449.4,679,445.3,679z"/>
-	<text id="XMLID_33_" transform="matrix(1 0 0 1 318.4533 659.2224)" class="st3 st0 st4">Continue!</text>
+	<text id="XMLID_33_" transform="matrix(1 0 0 1 318.4533 659.2224)" class="st0 st1 st4">Continue!</text>
 </g>
-<text id="XMLID_36_" transform="matrix(1 0 0 1 163.1755 591.4444)" class="st5 st0 st4">You unlocked a new level , the last Level</text>
+<text id="XMLID_36_" transform="matrix(1 0 0 1 163.1755 591.4444)" class="st5 st1 st4">You unlocked a new level , the last Level</text>
 <g id="XMLID_5_">
 	<path id="XMLID_649_" class="st6" d="M244.3,435.8c-22.1-4.9-48.3-25.2-63.1-45.8c-27.8-38.7-5-105.2,25.1-115.3
 		c4.1-1.4,9.8-2.2,14.2-7c9.3-10.3-0.6-24.7,0-40.6c0.8-23,23.2-42.6,40-51.3c43.2-22.4,105.4-1.1,120.6,28.6

@@ -20,14 +20,18 @@ level1_sound.load();
 let base_image = new Image();
 base_image.src = '../assets/developer.svg';
 
+
 let base_image3 = new Image();
 base_image3.src = '../assets/win.svg';
+
 
 let base_image7 = new Image();
 base_image7.src = '../assets/inicial.svg';
 
+
 let base_image8 = new Image();
 base_image8.src = '../assets/desk.svg';
+
 
 let base_image9 = new Image();
 base_image9.src = '../assets/flag1.svg';
