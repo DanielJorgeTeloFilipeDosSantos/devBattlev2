@@ -90,7 +90,7 @@ class Game {
     onCanvasClickGetMousePosition() {
         this.canvas.addEventListener('click', (event) => {
             this.getMousePos(event);
-            shoot1_sound.play();
+            //shoot1_sound.play();
         })
     }
 
