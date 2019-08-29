@@ -41,6 +41,9 @@ base_image13.src = '../assets/loose.svg';
 let base_image14 = new Image();
 base_image14.src = '../assets/win2.svg';
 
+let base_image15 = new Image();
+base_image15.src = '../assets/win3.svg';
+
 
 //-------------------------------------------------------------------------------
 
@@ -51,7 +54,6 @@ class Game {
 
         // Constants
         this.SPEED = 0;
-        this.counter = 0;
 
         //enemies array ----------------------------------------
         this.enemies = [];
@@ -98,16 +100,12 @@ class Game {
         this.sound.play('eatFood', {
             volume: 1
         });
-
-
         this.enemy = new Enemy(this);
-        this.score++;
     }
 
     reset() {
         this.createEnemy = new CreateEnemy(this,200);
         this.timer = 0;
-        this.score = 0;
     }
 
     start() {
@@ -156,24 +154,34 @@ class Game {
                 this.context.drawImage(base_image8, 0, 0, this.canvas.width, this.canvas.height);
                 this.context.drawImage(base_image9, 193, 385, this.canvas.width / 6, this.canvas.height / 6);
                 if(this.levelCompleted.level_1 === true){
-                    this.context.drawImage(base_image10, 200, 223, this.canvas.width / 6, this.canvas.height / 6);
+                    this.context.drawImage(base_image10, 205, 223, this.canvas.width / 6, this.canvas.height / 6);
                 }
                 if(this.levelCompleted.level_2 === true){
-                    this.context.drawImage(base_image11, 425, 225, this.canvas.width / 6, this.canvas.height / 6);
+                    this.context.drawImage(base_image11, 428, 202, this.canvas.width / 6, this.canvas.height / 6);
+                }
+                if(this.levelCompleted.level_3 === true){
+                    this.context.drawImage(base_image12, 468, 38, this.canvas.width / 6, this.canvas.height / 6);
                 }
 
 
                 // map_sound.play();
-                if (this.globalMousePosition.y >= 468 && this.globalMousePosition.y <= 506) {
+                if (this.globalMousePosition.y >= 400 && this.globalMousePosition.y <= 506 && this.globalMousePosition.x >= 200 && this.globalMousePosition.x <= 270 ) {
                     this.level = 2;
                     this.devAlive = true;
                     this.resetMouseState();
                     this.reset();
-                } else if(this.globalMousePosition.y >= 250 && this.globalMousePosition.y <= 350){
+                } else if(this.globalMousePosition.y >= 250 && this.globalMousePosition.y <= 350 && this.globalMousePosition.x >= 200 && this.globalMousePosition.x <= 270 ){
                     this.level = 3;
                     this.devAlive = true;
                     this.resetMouseState();
                     this.reset();
+                    console.log('junior flag')
+                } else if(this.globalMousePosition.y >= 230 && this.globalMousePosition.y <= 350 && this.globalMousePosition.x >= 420 && this.globalMousePosition.x <= 530 ){
+                    this.level = 4;
+                    this.devAlive = true;
+                    this.resetMouseState();
+                    this.reset();
+                    console.log('senior flag')
                 }
                 break;
             case 2: // first level boot camp
@@ -234,6 +242,30 @@ class Game {
                 break;
             case 4: // third level senior developer
                 console.log('third level senior developer')
+                console.log(this.devAlive)
+                if(this.devAlive === true){
+                    console.log(this.enemies)
+                    this.createEnemy.sendtoArray();
+                    this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
+                
+                for (let enemy of this.enemies) {
+                    enemy.getShoot();
+                    enemy.move();
+                    enemy.killDev();  
+                }
+                }else{
+                    console.log('you loose!')
+                    this.level = 8;
+                }
+
+                if(this.numberOfEnemiesKilled === 15){
+                    this.enemies = [];
+                    this.level = 10;
+                    this.numberOfEnemiesKilled = 0;
+                    this.levelCompleted.level_3 = true;
+                    this.resetMouseState();
+                }
+                this.resetMouseState();
                 break;
             case 5: // final level last level
                 console.log('final level last level')
@@ -241,7 +273,7 @@ class Game {
             case 6: //  show enemies on the map menu
                 console.log('show enemies on the map menu')
                 break;
-            case 7: //  show enemies on the map menu
+            case 7: 
                 console.log('you win!!!!')
                 this.context.drawImage(base_image3, 0, 0, this.canvas.width, this.canvas.height)
                 if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
@@ -250,7 +282,7 @@ class Game {
                     this.resetMouseState()
                 }
                 break;
-            case 8: //  show enemies on the map menu
+            case 8: 
                 console.log('you loose!!')
                 this.context.drawImage(base_image13, 0, 0, this.canvas.width, this.canvas.height)
                 if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
@@ -258,9 +290,17 @@ class Game {
                     this.resetMouseState()
                 }
                 break;
-             case 9: //  show enemies on the map menu
-                 console.log('you win2222222222!!!!')
+            case 9: 
+                 console.log('you win2!!!!')
                  this.context.drawImage(base_image14, 0, 0, this.canvas.width, this.canvas.height)
+                 if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
+                     this.level = 1;
+                     this.resetMouseState()
+                 }
+                 break;
+            case 10: 
+                 console.log('you win3!!!!')
+                 this.context.drawImage(base_image15, 0, 0, this.canvas.width, this.canvas.height)
                  if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
                      this.level = 1;
                      this.resetMouseState()

@@ -34,11 +34,11 @@ class Enemy {
       // this.offset_top = 900;
       // this.offset_bottom = 900;
     } else {
-      this.offset_top = this.posy + 25;
-      this.offset_bottom = this.posy + 80;
+      this.offset_top = this.posy + 22;
+      this.offset_bottom = this.posy + 85;
 
-      this.offset_left = this.posx + 33;
-      this.offset_right = this.posx + 62;
+      this.offset_left = this.posx + 30;
+      this.offset_right = this.posx + 67;
 
       if (this.globalMousePosition.y >= this.offset_top && this.globalMousePosition.y <= this.offset_bottom && this.globalMousePosition.x >= this.offset_left && this.globalMousePosition.x <= this.offset_right) {
         console.log('died')

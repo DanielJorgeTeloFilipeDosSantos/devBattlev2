@@ -24,7 +24,7 @@ class CreateEnemy {
   // }
 
   sendtoArray() {
-    this.radius += 100;
+    this.radius += 80;
     const angle = Math.random() * 2 * Math.PI;
     const enemy = new Enemy(this.game, this.radius, angle);
     //this.randomImage();
