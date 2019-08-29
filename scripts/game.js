@@ -221,8 +221,8 @@ class Game {
 
                 break;
             case 3: // second level junior developer
-                map_sound.pause();
                 level1_sound.play();
+                map_sound.pause();
                 if(this.devAlive === true){
                     this.createEnemy.sendtoArray();
                     this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
