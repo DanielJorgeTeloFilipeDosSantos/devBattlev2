@@ -15,6 +15,16 @@ let level1_sound = new Audio("../assets/west.mp3", {
 });
 level1_sound.load();
 
+let level2_sound = new Audio("../assets/overdrive.mp3", {
+    volume: 1
+});
+level2_sound.load();
+
+let level3_sound = new Audio("../assets/gowest.mp3", {
+    volume: 1
+});
+level3_sound.load();
+
 
 
 let base_image = new Image();
@@ -187,6 +197,11 @@ class Game {
                     this.devAlive = true;
                     this.resetMouseState();
                     this.reset();
+                } else if(this.globalMousePosition.y >= 100 && this.globalMousePosition.y <= 230 && this.globalMousePosition.x >= 420 && this.globalMousePosition.x <= 530 ){
+                    this.level = 5;
+                    this.devAlive = true;
+                    this.resetMouseState();
+                    this.reset();
                 }
                 break;
             case 2: // first level boot camp
@@ -217,7 +232,7 @@ class Game {
 
                 break;
             case 3: // second level junior developer
-                level1_sound.play();
+                level2_sound.play();
                 map_sound.pause();
                 if(this.devAlive === true){
                     this.createEnemy.sendtoArray2();
@@ -232,7 +247,7 @@ class Game {
                     this.level = 8;
                 }
 
-                if(this.numberOfEnemiesKilled === 31){
+                if(this.numberOfEnemiesKilled === 35){
                     this.enemies = [];
                     this.level = 9;
                     this.numberOfEnemiesKilled = 0;
@@ -242,22 +257,22 @@ class Game {
                 this.resetMouseState();
                 break;
             case 4: // third level senior developer
+                level3_sound.play();
                 map_sound.pause();
-                level1_sound.play();
                 if(this.devAlive === true){
-                    this.createEnemy.sendtoArray();
+                    this.createEnemy.sendtoArray3();
                     this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
                 
                 for (let enemy of this.enemies) {
-                    enemy.getShoot();
-                    enemy.move();
+                    enemy.getShoot3();
+                    enemy.move3();
                     enemy.killDev();  
                 }
                 }else{
                     this.level = 8;
                 }
 
-                if(this.numberOfEnemiesKilled === 15){
+                if(this.numberOfEnemiesKilled === 50){
                     this.enemies = [];
                     this.level = 10;
                     this.numberOfEnemiesKilled = 0;
@@ -267,11 +282,36 @@ class Game {
                 this.resetMouseState();
                 break;
             case 5: // final level last level
+                level3_sound.play();
+                map_sound.pause();
+                if(this.devAlive === true){
+                    this.createEnemy.sendtoArray4();
+                    this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
+                
+                for (let enemy of this.enemies) {
+                    enemy.getShoot4();
+                    enemy.move4();
+                    enemy.killDev();  
+                }
+                }else{
+                    this.level = 8;
+                }
+
+                if(this.numberOfEnemiesKilled === 50){
+                    this.enemies = [];
+                    this.level = 10;
+                    this.numberOfEnemiesKilled = 0;
+                    this.levelCompleted.level_3 = true;
+                    this.resetMouseState();
+                }
+                this.resetMouseState();
                 break;
             case 6: //  show enemies on the map menu
                 break;
             case 7: 
                 level1_sound.pause();
+                level2_sound.pause();
+                level3_sound.pause();
 
 
                 this.context.drawImage(base_image3, 0, 0, this.canvas.width, this.canvas.height)
@@ -283,6 +323,8 @@ class Game {
                 break;
             case 8: 
                 level1_sound.pause();
+                level2_sound.pause();
+                level3_sound.pause();
                 this.context.drawImage(base_image13, 0, 0, this.canvas.width, this.canvas.height)
                 if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
                     this.level = 1;
@@ -291,6 +333,8 @@ class Game {
                 break;
             case 9: 
                  level1_sound.pause();
+                 level2_sound.pause();
+                 level3_sound.pause();
                  this.context.drawImage(base_image14, 0, 0, this.canvas.width, this.canvas.height)
                  if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
                      this.level = 1;
@@ -299,6 +343,8 @@ class Game {
                  break;
             case 10: 
                  level1_sound.pause();
+                 level2_sound.pause();
+                 level3_sound.pause();
                  this.context.drawImage(base_image15, 0, 0, this.canvas.width, this.canvas.height)
                  if (this.globalMousePosition.y >= 650 && this.globalMousePosition.y <= 680) {
                      this.level = 1;
