@@ -73,7 +73,7 @@ class Game {
 
         this.level = 0;
         this.levelCompleted = {
-            level_1: true,
+            level_1: false,
             level_2: false,
             level_3: false
         }
