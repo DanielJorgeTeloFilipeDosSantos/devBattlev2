@@ -73,7 +73,7 @@ class Game {
 
         this.level = 0;
         this.levelCompleted = {
-            level_1: false,
+            level_1: true,
             level_2: false,
             level_3: false
         }
@@ -114,7 +114,7 @@ class Game {
     }
 
     reset() {
-        this.createEnemy = new CreateEnemy(this,200);
+        this.createEnemy = new CreateEnemy(this,400);
         this.timer = 0;
     }
 
@@ -220,19 +220,19 @@ class Game {
                 level1_sound.play();
                 map_sound.pause();
                 if(this.devAlive === true){
-                    this.createEnemy.sendtoArray();
+                    this.createEnemy.sendtoArray2();
                     this.context.drawImage(base_image, this.canvas.width / 3, this.canvas.height / 3, this.canvas.width / 4, this.canvas.height / 4);
                 
                 for (let enemy of this.enemies) {
-                    enemy.getShoot();
-                    enemy.move();
+                    enemy.getShoot2();
+                    enemy.move2();
                     enemy.killDev();  
                 }
                 }else{
                     this.level = 8;
                 }
 
-                if(this.numberOfEnemiesKilled === 15){
+                if(this.numberOfEnemiesKilled === 31){
                     this.enemies = [];
                     this.level = 9;
                     this.numberOfEnemiesKilled = 0;

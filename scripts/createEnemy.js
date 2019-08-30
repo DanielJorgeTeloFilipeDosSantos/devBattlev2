@@ -18,4 +18,13 @@ class CreateEnemy {
       this.game.enemies.push(enemy);
     }
   }
+
+  sendtoArray2() {
+    this.radius += 90;
+    const angle = Math.random() * 2 * Math.PI;
+    const enemy = new Enemy(this.game, this.radius, angle);
+    if (this.game.enemies.length < 31){
+      this.game.enemies.push(enemy);
+    }
+  }
 }
