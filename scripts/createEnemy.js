@@ -41,7 +41,7 @@ class CreateEnemy {
     this.radius += 100;
     const angle = Math.random() * 2 * Math.PI;
     const enemy = new Enemy(this.game, this.radius, angle);
-    if (this.game.enemies.length < 50){
+    if (this.game.enemies.length < 60){
       this.game.enemies.push(enemy);
     }
   }

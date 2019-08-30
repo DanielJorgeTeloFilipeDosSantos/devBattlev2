@@ -53,10 +53,6 @@ class Enemy {
         this.radius = 500000;
         this.game.numberOfEnemiesKilled +=1;
         this.isAlive = false;
-        console.log(this.game.numberOfEnemiesKilled)
-        console.log(this.isAlive)
-        console.log(this.game.enemies)
-        console.log('getShoot1')
       } else {
         this.paint();
       }
@@ -77,10 +73,6 @@ class Enemy {
         this.radius = 500000;
         this.game.numberOfEnemiesKilled +=1;
         this.isAlive = false;
-        console.log(this.game.numberOfEnemiesKilled)
-        console.log(this.isAlive)
-        console.log(this.game.enemies)
-        console.log('getShoot2')
       } else {
         this.paint2();
       }
@@ -101,10 +93,6 @@ class Enemy {
         this.radius = 500000;
         this.game.numberOfEnemiesKilled +=1;
         this.isAlive = false;
-        console.log(this.game.numberOfEnemiesKilled)
-        console.log(this.isAlive)
-        console.log(this.game.enemies)
-        console.log('getShoot3')
       } else {
         this.paint3();
       }
@@ -125,10 +113,6 @@ class Enemy {
         this.radius = 500000;
         this.game.numberOfEnemiesKilled +=1;
         this.isAlive = false;
-        console.log(this.game.numberOfEnemiesKilled)
-        console.log(this.isAlive)
-        console.log(this.game.enemies)
-        console.log('getShoot3')
       } else {
         this.paint4();
       }
@@ -234,7 +218,6 @@ class Enemy {
 
     context.drawImage(this.baseImage, this.posx, this.posy, 100, 100);
     context.restore();
-    console.log('paint4')
   }
 
   move() {
@@ -258,11 +241,6 @@ class Enemy {
        this.game.devAlive = false;
        this.game.enemies = [];
        this.game.numberOfEnemiesKilled = 0;
-        console.log(this.game.numberOfEnemiesKilled)
-        console.log(this.isAlive)
-        console.log(this.game.enemies)
-        console.log('killDev')
-        console.log(this.radius)
      } 
   }
 }
