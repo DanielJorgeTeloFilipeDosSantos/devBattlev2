@@ -14,7 +14,7 @@ class CreateEnemy {
     this.radius += 80;
     const angle = Math.random() * 2 * Math.PI;
     const enemy = new Enemy(this.game, this.radius, angle);
-    if (this.game.enemies.length < 15){
+    if (this.game.enemies.length < 20){
       this.game.enemies.push(enemy);
     }
   }
@@ -23,7 +23,7 @@ class CreateEnemy {
     this.radius += 90;
     const angle = Math.random() * 2 * Math.PI;
     const enemy = new Enemy(this.game, this.radius, angle);
-    if (this.game.enemies.length < 35){
+    if (this.game.enemies.length < 45){
       this.game.enemies.push(enemy);
     }
   }
@@ -32,7 +32,7 @@ class CreateEnemy {
     this.radius += 90;
     const angle = Math.random() * 2 * Math.PI;
     const enemy = new Enemy(this.game, this.radius, angle);
-    if (this.game.enemies.length < 50){
+    if (this.game.enemies.length < 60){
       this.game.enemies.push(enemy);
     }
   }
@@ -41,7 +41,7 @@ class CreateEnemy {
     this.radius += 100;
     const angle = Math.random() * 2 * Math.PI;
     const enemy = new Enemy(this.game, this.radius, angle);
-    if (this.game.enemies.length < 60){
+    if (this.game.enemies.length < 70){
       this.game.enemies.push(enemy);
     }
   }

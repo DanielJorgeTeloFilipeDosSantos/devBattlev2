@@ -229,7 +229,7 @@ class Game {
                     this.level = 8;
                 }
 
-                if(this.numberOfEnemiesKilled === 15){
+                if(this.numberOfEnemiesKilled === 20){
                     this.enemies = [];
                     this.level = 7;
                     this.numberOfEnemiesKilled = 0;
@@ -255,7 +255,7 @@ class Game {
                     this.level = 8;
                 }
 
-                if(this.numberOfEnemiesKilled === 35){
+                if(this.numberOfEnemiesKilled === 45){
                     this.enemies = [];
                     this.level = 9;
                     this.numberOfEnemiesKilled = 0;
@@ -280,7 +280,7 @@ class Game {
                     this.level = 8;
                 }
 
-                if(this.numberOfEnemiesKilled === 50){
+                if(this.numberOfEnemiesKilled === 60){
                     this.enemies = [];
                     this.level = 10;
                     this.numberOfEnemiesKilled = 0;
@@ -305,7 +305,7 @@ class Game {
                     this.level = 8;
                 }
 
-                if(this.numberOfEnemiesKilled === 60){
+                if(this.numberOfEnemiesKilled === 70){
                     this.enemies = [];
                     this.level = 11;
                     this.numberOfEnemiesKilled = 0;
